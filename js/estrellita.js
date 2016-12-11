@@ -153,8 +153,8 @@ function reflectKoala(a, ball) {
         return false;
 
 }
-tamañoX=0;
-tamañoY=0;
+var tamañoX=0.1;
+var tamañoY=0.1;
 
 function reflectCarita(a, ball) {
     tamañoX=0.1;
