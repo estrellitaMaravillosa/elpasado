@@ -193,7 +193,7 @@ function update() {
     atari.angle=0;
     game.physics.arcade.collide(atari, balls, null, reflectKoala, this);
     game.physics.arcade.collide(atari, pulpos, null, reflectPulpo, this);
-    game.physics.arcade.collide(atari, caritas, null, reflectCarita, this);
+ //   game.physics.arcade.collide(atari, caritas, null, reflectCarita, this);
     atari.body.velocity.x = 0;
     atari.body.velocity.y = 0;
 
