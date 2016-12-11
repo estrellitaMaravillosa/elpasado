@@ -48,7 +48,7 @@ function create() {
     balls.createMultiple(100, 'koala', 0, false);
 
     caritas = game.add.group();
-    caritas.createMultiple(5, 'carita', 0, false);
+    caritas.createMultiple(3, 'carita', 0, false);
 
     pulpos = game.add.group();
     pulpos.createMultiple(100, 'pulpo', 0, false);
@@ -193,7 +193,7 @@ function update() {
     atari.angle=0;
     game.physics.arcade.collide(atari, balls, null, reflectKoala, this);
     game.physics.arcade.collide(atari, pulpos, null, reflectPulpo, this);
- //   game.physics.arcade.collide(atari, caritas, null, reflectCarita, this);
+    game.physics.arcade.collide(atari, caritas, null, reflectCarita, this);
     atari.body.velocity.x = 0;
     atari.body.velocity.y = 0;
 
