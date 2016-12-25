@@ -36,6 +36,7 @@ function preload() {
     game.load.audio('burrito', 'assets/burrito.ogg');
     game.load.audio('alMundoPaz', 'assets/alMundoPaz.ogg');
     game.load.audio('frosty', 'assets/frosty.ogg');
+        game.load.audio('navidad', 'assets/navidadMusica.ogg');
 }
 
 var atari;
@@ -184,6 +185,9 @@ layer5.visible=false;
     frosty = game.add.audio('frosty');
     frosty.allowMultiple = true;
 
+   navidad = game.add.audio('navidad');
+    navidad.allowMultiple = true; 
+    
     emitter = game.add.emitter(game.world.centerX, 0, 200);
 
     emitter.width = game.world.width;
@@ -235,6 +239,8 @@ function elBurrito(){
             yeah.stop();
             rodolfo.stop();
             frosty.stop();
+            navidad.stop();
+            navidadAndando=false;
             frostyAndando=false;
             rodolfoAndando = false;
             fx.play();
@@ -259,7 +265,8 @@ function alMundoPaz(){
             rodolfo.stop();
             rodolfoAndando = false;
             yeah.play();
-
+            navidad.stop();
+            navidadAndando=false;
             alMundoPazAndando = true;
             burritoAndando = false;
         }else{
@@ -278,7 +285,10 @@ function rodolfoMusica(){
             fx.stop();
             yeah.stop();
             frosty.stop();
+            navidad.stop();
+            navidadAndando=false;
             frostyAndando=false;
+
 rodolfo.play();
             rodolfoAndando = true;
             burritoAndando = false;
@@ -299,11 +309,14 @@ function frostyMusica(){
             fx.stop();
             yeah.stop();
             rodolfo.stop();
+            navidad.stop();
+            navidadAndando=false;
             frosty.play();
             frostyAndando=true;
             rodolfoAndando = false;
             burritoAndando = false;
             alMundoPazAndando = false;
+
         }else{
 
             frosty.stop();
@@ -312,7 +325,7 @@ function frostyMusica(){
     }
 
 }
-
+var navidadAndando=false;
 function update() {
 
     atari.angle=0;
@@ -330,25 +343,33 @@ function update() {
     if(layer5.visible==true && layer6.visible==true){
         if ((atari.position.x>=535 && atari.position.x<=655) && (atari.position.y>=645 && atari.position.y<=770)){
             elBurrito()
-        };
+        }else
         if ((atari.position.x>=85 && atari.position.x<=380) && (atari.position.y>=515 && atari.position.y<=810)){
            alMundoPaz()
-        };
+        }else
         if ((atari.position.x>=1189 && atari.position.x<=1274) && (atari.position.y>=780 && atari.position.y<=885)){
             rodolfoMusica()
-        };
+        }else
        if ((atari.position.x>=1571 && atari.position.x<=1696) && (atari.position.y>=671 && atari.position.y<=846)){
            frostyMusica()
-        };
+        }else{
+            if (navidadAndando==false &&     frostyAndando==false   &&    rodolfoAndando == false &&  burritoAndando == false &&
+           alMundoPazAndando == false){
+             navidad.loopFull(0.7);
+             navidadAndando=true;
+            }
+       }
     }else{
         fx.stop();
         frosty.stop();
         rodolfo.stop();
         yeah.stop();
+        navidad.stop();
         frostyAndando=false;
         rodolfoAndando = false;
         burritoAndando = false;
         alMundoPazAndando = false;
+        navidadAndando=false;
     }
 
 
