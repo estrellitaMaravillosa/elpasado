@@ -2,7 +2,9 @@
 
 var game = new Phaser.Game(1200, 600, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update});
 var emitter;
+
 function preload() {
+    game.plugins.add(Phaser.Plugin.SaveCPU);
     game.load.tilemap('level', 'assets/escenarioNavidad2.json', null, Phaser.Tilemap.TILED_JSON);
 
     game.load.image('rain', 'assets/rain.png');
@@ -350,7 +352,7 @@ function frostyMusica(){
 var navidadAndando=false;
 var nadaAnda=true;
 function update() {
-    atari.angle=0;g
+    atari.angle=0;
     atari.body.velocity.x = 0;
     atari.body.velocity.y = 0;
 
