@@ -350,7 +350,7 @@ function frostyMusica(){
 var navidadAndando=false;
 var nadaAnda=true;
 function update() {
-    atari.angle=0;g
+    atari.angle=0;
     atari.body.velocity.x = 0;
     atari.body.velocity.y = 0;
 
