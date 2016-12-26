@@ -265,6 +265,7 @@ function elBurrito(){
             fx.play();
             alMundoPazAndando=false;
             burritoAndando = true;
+               nadaAnda=false;
         }
     }else if (letraR.downDuration(50)){
         if (burritoAndando==true){
@@ -287,6 +288,7 @@ function alMundoPaz(){
             navidadAndando=false;
             alMundoPazAndando = true;
             burritoAndando = false;
+               nadaAnda=false;
         }
     }else  if (letraR.downDuration(50)){
         if (alMundoPazAndando == true) {
@@ -311,6 +313,7 @@ rodolfo.play();
             rodolfoAndando = true;
             burritoAndando = false;
             alMundoPazAndando = false;
+               nadaAnda=false;
         }
     }else if (letraR.downDuration(50)){
         if (rodolfoAndando == true) {
@@ -335,7 +338,7 @@ function frostyMusica(){
             rodolfoAndando = false;
             burritoAndando = false;
             alMundoPazAndando = false;
-
+   nadaAnda=false;
         }
     }else if (letraR.downDuration(50)){
         if (frostyAndando == true) {
@@ -345,6 +348,7 @@ function frostyMusica(){
 
 }
 var navidadAndando=false;
+var nadaAnda=true;
 function update() {
 
     atari.angle=0;
@@ -359,7 +363,7 @@ function update() {
         encenderLuzIntesa2()
     }
 
-    if(layer5.visible==true && layer6.visible==true){
+      if(layer5.visible==true && layer6.visible==true){
         if ((atari.position.x>=535 && atari.position.x<=655) && (atari.position.y>=645 && atari.position.y<=770)){
             elBurrito()
         }else
@@ -376,9 +380,11 @@ function update() {
            alMundoPazAndando == false){
              navidad.loopFull(0.7);
              navidadAndando=true;
+             nadaAnda=false;
             }
        }
     }else{
+        if(nadaAnda==false){
         fx.stop();
         frosty.stop();
         rodolfo.stop();
@@ -389,8 +395,9 @@ function update() {
         burritoAndando = false;
         alMundoPazAndando = false;
         navidadAndando=false;
+        nadaAnda=true;
+        }
     }
-
 
 
     atari.body.velocity.x = 0;
