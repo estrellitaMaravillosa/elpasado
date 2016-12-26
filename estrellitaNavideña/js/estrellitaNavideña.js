@@ -352,34 +352,7 @@ function frostyMusica(){
 var navidadAndando=false;
 var nadaAnda=true;
 function update() {
-    atari.angle=0;
-    atari.body.velocity.x = 0;
-    atari.body.velocity.y = 0;
 
-    if (cursors.up.isDown) {
-        atari.body.velocity.y -= 300 + acelerador;
-
-    }
-    else if (cursors.down.isDown) {
-        atari.body.velocity.y += 300 + acelerador;
-
-    } //else {
-
-
-    if (cursors.left.isDown) {
-        atari.body.velocity.x -= 300 + acelerador;
-        atari.angle=-10;
-
-    } else if (cursors.right.isDown) {
-        atari.body.velocity.x += 300 + acelerador;
-        atari.angle=10;
-
-    }
-    if (spacebar.isDown){
-        acelerador=250;
-    }else{
-        acelerador=0;
-    }
 
     if(layer5.visible==true && layer6.visible==true){
         for (var i = 0; i < max; i++)
@@ -449,7 +422,34 @@ function update() {
         nadaAnda=true;
         }
     }
+    atari.angle=0;
+    atari.body.velocity.x = 0;
+    atari.body.velocity.y = 0;
 
+    if (cursors.up.isDown) {
+        atari.body.velocity.y -= 300 + acelerador;
+
+    }
+    else if (cursors.down.isDown) {
+        atari.body.velocity.y += 300 + acelerador;
+
+    } //else {
+
+
+    if (cursors.left.isDown) {
+        atari.body.velocity.x -= 300 + acelerador;
+        atari.angle=-10;
+
+    } else if (cursors.right.isDown) {
+        atari.body.velocity.x += 300 + acelerador;
+        atari.angle=10;
+
+    }
+    if (spacebar.isDown){
+        acelerador=250;
+    }else{
+        acelerador=0;
+    }
 
 
 
