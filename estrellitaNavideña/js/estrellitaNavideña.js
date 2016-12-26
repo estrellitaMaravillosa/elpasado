@@ -42,7 +42,7 @@ function preload() {
 var atari;
 var map;
 
-var cursors,spacebar,letraE;
+var cursors,spacebar,letraE,letraR;
 
 var rodolfo,iuju,yeah,frosty;
 var distance = 300;
@@ -157,7 +157,7 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     spacebar = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     letraE=game.input.keyboard.addKey(Phaser.KeyCode.E);
-
+letraR=game.input.keyboard.addKey(Phaser.KeyCode.R);
 
     layer4 = map.createLayer(3);
 
@@ -216,23 +216,42 @@ layer5.visible=false;
 function encenderLuzIntesa1()
 {
     if (letraE.downDuration(50)){
-        layer5.visible=!layer5.visible;
-        layer7.visible=!layer7.visible;
-        layer11.visible=!layer11.visible;
-        iuju.play();
+        if(layer5.visible==false){
+            layer5.visible=true;
+            layer7.visible=true;
+            layer11.visible=false;
+            iuju.play();
+        }}else if (letraR.downDuration(50)){
+            if(layer5.visible==true){
+                layer5.visible=false;
+                layer7.visible=false;
+                layer11.visible=true;
+                iuju.play();
+            }
+
     }
 }
 
 function encenderLuzIntesa2()
 {
     if (letraE.downDuration(50)){
-        layer6.visible=!layer6.visible;
-        layer8.visible=!layer8.visible;
-layer12.visible=!layer12.visible;
+        if(layer6.visible==false){
+        layer6.visible=true;
+        layer8.visible=true;
+layer12.visible=false;
         iuju.play();
+        }
+    }else if (letraR.downDuration(50)){
+        if(layer6.visible==true){
+            layer6.visible=false;
+            layer8.visible=false;
+            layer12.visible=true;
+            iuju.play();
+        }
     }
 }
 var burritoAndando=false;
+
 function elBurrito(){
     if (letraE.downDuration(50)) {
         if (burritoAndando == false) {
@@ -246,15 +265,14 @@ function elBurrito(){
             fx.play();
             alMundoPazAndando=false;
             burritoAndando = true;
-        }else{
-
-            fx.stop();
-            burritoAndando = false;
         }
+    }else if (letraR.downDuration(50)){
+        if (burritoAndando==true){
+        fx.stop();
+        burritoAndando = false;}
     }
 
 }
-
 var alMundoPazAndando=false;
 function alMundoPaz(){
     if (letraE.downDuration(50)) {
@@ -269,11 +287,11 @@ function alMundoPaz(){
             navidadAndando=false;
             alMundoPazAndando = true;
             burritoAndando = false;
-        }else{
-
-            yeah.stop();
-            alMundoPazAndando = false;
         }
+    }else  if (letraR.downDuration(50)){
+        if (alMundoPazAndando == true) {
+        yeah.stop();
+        alMundoPazAndando = false;}
     }
 
 }
@@ -293,8 +311,9 @@ rodolfo.play();
             rodolfoAndando = true;
             burritoAndando = false;
             alMundoPazAndando = false;
-        }else{
-
+        }
+    }else if (letraR.downDuration(50)){
+        if (rodolfoAndando == true) {
             rodolfo.stop();
             rodolfoAndando = false;
         }
@@ -317,11 +336,11 @@ function frostyMusica(){
             burritoAndando = false;
             alMundoPazAndando = false;
 
-        }else{
-
-            frosty.stop();
-            frostyAndando=false;
         }
+    }else if (letraR.downDuration(50)){
+        if (frostyAndando == true) {
+        frosty.stop();
+        frostyAndando=false;}
     }
 
 }
