@@ -4,7 +4,7 @@ var game = new Phaser.Game(1200, 600, Phaser.CANVAS, 'gameDiv', { preload: prelo
 var emitter;
 
 function preload() {
-    //game.plugins.add(Phaser.Plugin.SaveCPU);
+    game.plugins.add(Phaser.Plugin.SaveCPU);
     game.load.tilemap('level', 'assets/escenarioNavidad2.json', null, Phaser.Tilemap.TILED_JSON);
 
     game.load.image('rain', 'assets/rain.png');
