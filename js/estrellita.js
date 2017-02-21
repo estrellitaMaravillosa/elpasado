@@ -2,7 +2,7 @@
  * Created by Pablo on 10/12/2016.
  */
 
-var game = new Phaser.Game(1200, 600, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(1200, 600, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
     game.load.tilemap('level', 'assets/mapa7.json', null, Phaser.Tilemap.TILED_JSON);
