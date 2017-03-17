@@ -18,14 +18,14 @@ function preload() {
     game.load.audio('vals', 'assets/vals.mp3');
 }
 
-var vals, chico;
+var vals, chico,yaApreto=false;
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 1000, 600);
 
     chico = game.add.sprite(1, 200, 'chico');
     chico.anchor.setTo(0.5, 0.5);
-    chico.scale.setTo(0.4, 0.4);
+    chico.scale.setTo(0.5, 0.5);
     chico.animations.add('triste', [0, 1]);
     chico.animations.add('caminarFeliz', [6, 7]);
     chico.animations.add('felicidadEnCamino', [2, 3, 4, 5]);
@@ -50,8 +50,8 @@ function create() {
 
 
     cursors = game.input.keyboard.createCursorKeys();
-    spacebar = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-    letraE = game.input.keyboard.addKey(Phaser.KeyCode.E);
+
+    letraT = game.input.keyboard.addKey(Phaser.KeyCode.T);
     letraR = game.input.keyboard.addKey(Phaser.KeyCode.R);
 
     mummy = game.add.sprite(300, 200, 'mummy');
@@ -82,7 +82,7 @@ function create() {
         }, 1750, Phaser.Easing.Quadratic.InOut, true);
     }, this);
 }
-toco = false;
+
 function update() {
     atari.angle = 0;
     atari.body.velocity.x = 0;
@@ -90,13 +90,13 @@ function update() {
     game.physics.arcade.collide(mummy, chico,
         function () {
             chico.animations.play('felicidadEnCamino', 2, true);
-            toco = true;
+
 
         });
     game.physics.arcade.collide(mummy2, chico,
 
         function () {
-            if (toco)
+
                 chico.animations.play('caminarFeliz', 2, true);
 
 
@@ -104,25 +104,25 @@ function update() {
 
 
     if (cursors.up.isDown) {
-        atari.body.velocity.y -= 300 + acelerador;
+        atari.body.velocity.y -= 300 ;
 
     }
     else if (cursors.down.isDown) {
-        atari.body.velocity.y += 300 + acelerador;
+        atari.body.velocity.y += 300 ;
 
     } //else {
 
 
     if (cursors.left.isDown) {
-        atari.body.velocity.x -= 300 + acelerador;
+        atari.body.velocity.x -= 300 ;
         atari.angle = -10;
 
     } else if (cursors.right.isDown) {
-        atari.body.velocity.x += 300 + acelerador;
+        atari.body.velocity.x += 300 ;
         atari.angle = 10;
 
     }
-    if (spacebar.isDown) {
+    if (letraT.downDuration(50)) {
         if (!yaApreto) {
             mummy.visible = true;
             mummy.animations.play('walk', 7, true);
@@ -131,21 +131,27 @@ function update() {
             yaApreto = true;
             vals.play();
         }
-        mummy.position.x = atari.position.x + 55;
-        mummy.position.y = atari.position.y;
-        mummy2.position.x = atari.position.x - 55;
-        mummy2.position.y = atari.position.y;
 
-    } else {
+
+    }else {
+        if (letraR.downDuration(50))
+      if(yaApreto){
         yaApreto = false;
         mummy.animations.stop();
-        acelerador = 0;
+
         mummy.visible = false;
         mummy2.animations.stop();
-        acelerador = 0;
+
         mummy2.visible = false;
         vals.stop();
         chico.animations.play("triste", 2, true);
+        }
+    }
+    if(yaApreto){
+      mummy.position.x = atari.position.x + 55;
+      mummy.position.y = atari.position.y;
+      mummy2.position.x = atari.position.x - 55;
+      mummy2.position.y = atari.position.y;
     }
 
 }
