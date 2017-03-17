@@ -6,13 +6,13 @@ var game = new Phaser.Game(1000, 600, Phaser.CANVAS, 'gameDiv', {
     preload: preload,
     create: create,
     update: update,
-    render: render
+
 }, true);
 
 function preload() {
 
     game.load.image('personaje', 'assets/estrellita2.png');
-    game.load.image('triste', 'assets/tristeIzquierda.png');
+  //  game.load.image('triste', 'assets/tristeIzquierda.png');
     game.load.spritesheet('mummy', 'assets/ellaCanta.png', 160, 160, 7);
     game.load.spritesheet('chico', 'assets/chico2.png', 128, 128, 8);
     game.load.audio('vals', 'assets/vals.mp3');
@@ -20,13 +20,11 @@ function preload() {
 
 var vals, chico;
 function create() {
-
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 1000, 600);
 
     chico = game.add.sprite(1, 200, 'chico');
     chico.anchor.setTo(0.5, 0.5);
-
     chico.scale.setTo(0.4, 0.4);
     chico.animations.add('triste', [0, 1]);
     chico.animations.add('caminarFeliz', [6, 7]);
@@ -151,5 +149,3 @@ function update() {
     }
 
 }
-
-
