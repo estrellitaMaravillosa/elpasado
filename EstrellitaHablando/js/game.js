@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 400, Phaser.CANVAS);
+var game = new Phaser.Game(1000, 400, Phaser.CANVAS);
 game.transparent=true;
 game.state.add('boot',bootState);
 game.state.add('preload',preloadState);
