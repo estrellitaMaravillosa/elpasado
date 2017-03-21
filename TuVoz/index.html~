@@ -16,8 +16,8 @@
 			cursor: pointer;
 		}
 
-.reveal p,
-.reveal span {
+p
+ {
   font-family: 'Handlee', cursive; }
 	</style>
 	
