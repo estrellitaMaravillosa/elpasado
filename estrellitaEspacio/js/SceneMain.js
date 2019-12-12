@@ -18,7 +18,7 @@ class SceneMain extends Phaser.Scene {
     this.load.image("sprEnemy1", "content/sprEnemy1.png");
     this.load.image("lifeIndicator", "content/life.png");
     this.load.image("puntosIndicator", "content/puntos.png");
-    this.load.image("lifeItem", "content/itemLife.png");
+    this.load.image("lifeItem", "content/itemlife.png");
     this.load.image("puntajeItem", "content/puntosItem.png");
 
     this.load.spritesheet("sprEnemy2", "content/sprEnemy2.png", {
