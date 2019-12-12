@@ -38,7 +38,7 @@ class SceneMain extends Phaser.Scene {
   }
 
   create() {
-   
+    this.yaGano=false;
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -383,6 +383,34 @@ if (!this.yaGano){
     this.ganasteEstrellita3.visible=true;
     this.timerLifeEvents.delay=1000;
     this.yaGano=true;
+
+    this.btnRestart = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "sprBtnRestart"
+    );
+
+    this.btnRestart.setInteractive();
+
+    this.btnRestart.on("pointerover", function() {
+      this.btnRestart.setTexture("sprBtnRestartHover"); 
+
+    }, this);
+
+    this.btnRestart.on("pointerout", function() {
+      this.setTexture("sprBtnRestart");
+    });
+
+    this.btnRestart.on("pointerdown", function() {
+      this.btnRestart.setTexture("sprBtnRestartDown");
+  
+    }, this);
+
+    this.btnRestart.on("pointerup", function() {
+      this.btnRestart.setTexture("sprBtnRestart");
+      this.scene.start("SceneMain");
+    }, this);
+
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {
       var enemy = this.enemies.getChildren()[i];
