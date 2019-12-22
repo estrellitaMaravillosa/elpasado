@@ -11,11 +11,9 @@ class Entity extends Phaser.GameObjects.Sprite {
 
   explode(canDestroy) {
     if (!this.getData("isDead")) {
-      // Set the texture to the explosion image, then play the animation
-      this.setTexture("sprExplosion");  // this refers to the same animation key we used when we added this.anims.create previously
-      this.play("sprExplosion"); // play the animation
-      // pick a random explosion sound within the array we defined in this.sfx in SceneMain
-      // this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
+      this.setTexture("sprExplosion");  
+      this.play("sprExplosion");
+
       if (this.shootTimer !== undefined) {
         if (this.shootTimer) {
           this.shootTimer.remove(false);
@@ -39,7 +37,7 @@ class Entity extends Phaser.GameObjects.Sprite {
 class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, "Player");
-    this.vida = 10;
+    this.vida = 40;
 
     this.puntuacion = 0;
     this.setData("speed", 200);
@@ -104,13 +102,11 @@ class Player extends Entity {
 
     if (this.getData("isShooting")) {
       if (this.getData("timerShootTick") < this.getData("timerShootDelay")) {
-        this.setData("timerShootTick", this.getData("timerShootTick") + 1); // every game update, increase timerShootTick by one until we reach the value of timerShootDelay
+        this.setData("timerShootTick", this.getData("timerShootTick") + 1); 
       }
-      else { // when the "manual timer" is triggered:
+      else { 
         var laser = new PlayerLaser(this.scene, this.x, this.y);
         this.scene.playerLasers.add(laser);
-      
-        // this.scene.sfx.laser.play(); // play the laser sound effect
         this.setData("timerShootTick", 0);
       }
     }
