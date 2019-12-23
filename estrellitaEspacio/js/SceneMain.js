@@ -118,7 +118,7 @@ class SceneMain extends Phaser.Scene {
     this.ganasteEstrellita.setOrigin(0.5);
     this.ganasteEstrellita.visible=false;
 
-    this.ganasteEstrellita2 = this.add.text(this.game.config.width * 0.5, 150 , "¡Feliz Cumpleaños!", {
+    this.ganasteEstrellita2 = this.add.text(this.game.config.width * 0.5, 150 , "¡Te quiero dulce Angelica!", {
       fontFamily: 'monospace',
       fontSize: 25,
       fontStyle: 'bold',
@@ -129,7 +129,7 @@ class SceneMain extends Phaser.Scene {
     this.ganasteEstrellita2.setOrigin(0.5);
     this.ganasteEstrellita2.visible=false;
 
-    this.ganasteEstrellita3 = this.add.text(this.game.config.width * 0.5, 200 , "de Pablo Sebastian", {
+    this.ganasteEstrellita3 = this.add.text(this.game.config.width * 0.5, 200 , "de Cielito", {
       fontFamily: 'monospace',
       fontSize: 20,
       fontStyle: 'bold',
